@@ -1,24 +1,33 @@
 package it.ranftesting.weatherforecaster.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class OpenMeteoDTO {
+    @JsonProperty("latitude")
     private Float latitude;
+    @JsonProperty("longitude")
     private Float longitude;
+    @JsonProperty("generationtime_ms")
     private Double generationtimeMs;
+    @JsonProperty("utc_offset_seconds")
     private Integer utcOffsetSeconds;
-
+    @JsonProperty("timezone")
     private String timezone;
+    @JsonProperty("timezone_abbreviation")
     private String timezoneAbbreviation;
+    @JsonProperty("elevation")
     private Integer elevation;
-
-    private ArrayList<OpenMeteoCurrentWeatherUnitDTO> currentWeatherUnitsDTO;
+    @JsonProperty("current_weather_units")
+    private OpenMeteoCurrentWeatherUnitDTO currentWeatherUnitsDTO;
+    @JsonProperty("current_weather")
     private OpenMeteoCurrentWeatherDTO currentWeatherDTO;
 
     public OpenMeteoDTO() {
         this.currentWeatherDTO = new OpenMeteoCurrentWeatherDTO();
-        this.currentWeatherUnitsDTO = new ArrayList<>();
+        this.currentWeatherUnitsDTO = new OpenMeteoCurrentWeatherUnitDTO();
     }
 
     public Float getLatitude() {
@@ -77,11 +86,11 @@ public class OpenMeteoDTO {
         this.elevation = elevation;
     }
 
-    public ArrayList<OpenMeteoCurrentWeatherUnitDTO> getCurrentWeatherUnitsDTO() {
+    public OpenMeteoCurrentWeatherUnitDTO getCurrentWeatherUnitsDTO() {
         return currentWeatherUnitsDTO;
     }
 
-    public void setCurrentWeatherUnitsDTO(ArrayList<OpenMeteoCurrentWeatherUnitDTO> currentWeatherUnitsDTO) {
+    public void setCurrentWeatherUnitsDTO(OpenMeteoCurrentWeatherUnitDTO currentWeatherUnitsDTO) {
         this.currentWeatherUnitsDTO = currentWeatherUnitsDTO;
     }
 

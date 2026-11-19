@@ -1,18 +1,26 @@
 package it.ranftesting.weatherforecaster.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class OpenMeteoCurrentWeatherDTO {
+    @JsonProperty("time")
     @DateTimeFormat(pattern = "yyyy-MM-ddThh:mm")
     private LocalDate time;
+    @JsonProperty("interval")
     private Integer interval;
+    @JsonProperty("temperature")
     private Float temperature;
+    @JsonProperty("windspeed")
     private Float windSpeed;
+    @JsonProperty("winddirection")
     private Integer windDirection;
+    @JsonProperty("is_day")
     private Boolean day;
+    @JsonProperty("weathercode")
     private String weatherCode;
 
     public OpenMeteoCurrentWeatherDTO() {
