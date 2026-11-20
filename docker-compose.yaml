@@ -1,0 +1,25 @@
+services:
+  weatherforecaster:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: weatherforecaster
+
+    ports:
+      - "8080:8080"
+      - "9092:9092"
+
+    environment:
+      DB_URL: jdbc:h2:file:/data/weatherdb
+      DB_USERNAME: ranfagni
+      DB_PASSWORD:
+      H2_CONSOLE: "true"
+
+    volumes:
+      - ./data:/data
+
+    restart: unless-stopped
+
+volumes:
+  weather-data:
