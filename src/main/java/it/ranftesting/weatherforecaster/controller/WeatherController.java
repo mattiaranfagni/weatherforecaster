@@ -1,7 +1,6 @@
 package it.ranftesting.weatherforecaster.controller;
 
-import it.ranftesting.weatherforecaster.service.WeatherService;
-import org.springframework.beans.factory.annotation.Autowired;
+import it.ranftesting.weatherforecaster.service.OpenMeteoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class WeatherController {
 
-    private final WeatherService weatherService;
+    private final OpenMeteoService openMeteoService;
 
-    public WeatherController(WeatherService weatherService) {
-        this.weatherService = weatherService;
+    public WeatherController(OpenMeteoService openMeteoService) {
+        this.openMeteoService = openMeteoService;
     }
 
     @GetMapping("/")
@@ -22,12 +21,10 @@ public class WeatherController {
         return "Welcome to WeatherForecaster!";
     }
 
-    @GetMapping("/openmeteo-api")
+    @GetMapping("/openmeteo-api-params")
     public String getOpenMeteoData(@RequestParam("latitude") Float latitude,
                                    @RequestParam("longitude") Float longitude,
                                    @RequestParam("current_weather") Boolean currentWeather) {
-        return this.weatherService.getOpenMeteoData(latitude, longitude, currentWeather);
+        return this.openMeteoService.getOpenMeteoData(latitude, longitude, currentWeather);
     }
-
-
 }
