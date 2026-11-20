@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
-@Table(name = "opn_meteo", schema = "opn_mt")
+@Table(name = "opn_meteo")
 @Getter
 @Setter
 @NoArgsConstructor
