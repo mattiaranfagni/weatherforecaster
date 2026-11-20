@@ -4,12 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherDTO;
 import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherUnitDTO;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Table(name = "opn_meteo", schema = "opn_mt")
+@Getter
+@Setter
+@NoArgsConstructor
 public class OpenMeteoEntity {
 
     @Id
@@ -62,5 +68,4 @@ public class OpenMeteoEntity {
     @Column(name = "opn_meteo_weathercode")
     private String weatherCode;
 
-    // Getter e Setter
 }
