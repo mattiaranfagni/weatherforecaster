@@ -22,9 +22,11 @@ public class WeatherController {
     }
 
     @GetMapping("/openmeteo-api-params")
-    public String getOpenMeteoData(@RequestParam("latitude") Float latitude,
+    public String getOpenMeteoData(
+                                   @RequestParam("city") String cityName,
+                                   @RequestParam("latitude") Float latitude,
                                    @RequestParam("longitude") Float longitude,
                                    @RequestParam("current_weather") Boolean currentWeather) {
-        return this.openMeteoService.getOpenMeteoData(latitude, longitude, currentWeather);
+        return this.openMeteoService.getOpenMeteoData(cityName, latitude, longitude, currentWeather);
     }
 }
