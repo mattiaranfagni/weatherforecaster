@@ -3,13 +3,12 @@ package it.ranftesting.weatherforecaster.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class OpenMeteoCurrentWeatherDTO {
     @JsonProperty("time")
-    @DateTimeFormat(pattern = "yyyy-MM-ddThh:mm")
-    private LocalDate time;
+    private LocalDateTime time;
     @JsonProperty("interval")
     private Integer interval;
     @JsonProperty("temperature")
@@ -26,11 +25,11 @@ public class OpenMeteoCurrentWeatherDTO {
     public OpenMeteoCurrentWeatherDTO() {
     }
 
-    public LocalDate getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

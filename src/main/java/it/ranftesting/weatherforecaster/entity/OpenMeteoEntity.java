@@ -5,111 +5,62 @@ import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherDTO;
 import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherUnitDTO;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 @Entity
-@Table(name="opn_meteo", schema = "opn_mt")
+@Table(name = "opn_meteo", schema = "opn_mt")
 public class OpenMeteoEntity {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "opn_meteo_id")
     private Long id;
-    @Column(name = "opn_meteo_lat", nullable=false)
+
+    @Column(name = "opn_meteo_lat", nullable = false)
     private Float latitude;
-    @Column(name = "opn_meteo_lon", nullable=false)
+
+    @Column(name = "opn_meteo_lon", nullable = false)
     private Float longitude;
-    @Column(name = "opn_meteo_gen_time_ms")
-    private Double generationtimeMs;
-    @Column(name = "opn_meteo_otc_off_sec")
-    private Integer utcOffsetSeconds;
-    @Column(name = "opn_meteo_timezone")
-    private String timezone;
-    @Column(name = "opn_meteo_timezone_abbr")
-    private String timezoneAbbreviation;
+
+    @Column(name = "opn_meteo_gen_timestamp")
+    private Date generationTimestamp;
+
     @Column(name = "opn_meteo_elev")
     private Integer elevation;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private OpenMeteoCurrentWeatherUnitEntity currentWeatherUnitsDTO;
-    @OneToOne(cascade = CascadeType.ALL)
-    private OpenMeteoCurrentWeatherEntity currentWeatherDTO;
-    public OpenMeteoEntity() {}
+    @Column(name = "opn_meteo_time")
+    private LocalDateTime time;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "opn_meteo_time_unit")
+    private String timeUnit;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "opn_meteo_interval")
+    private Integer interval;
 
-    public Float getLatitude() {
-        return latitude;
-    }
+    @Column(name = "opn_meteo_interval_unit")
+    private String intervalUnit;
 
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
+    @Column(name = "opn_meteo_temp")
+    private Float temperature;
 
-    public Float getLongitude() {
-        return longitude;
-    }
+    @Column(name = "opn_meteo_temp_unit")
+    private String temperatureUnit;
 
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
+    @Column(name = "opn_meteo_wnd_sp")
+    private Float windSpeed;
 
-    public Double getGenerationtimeMs() {
-        return generationtimeMs;
-    }
+    @Column(name = "opn_meteo_wnd_sp_unit")
+    private String windSpeedUnit;
 
-    public void setGenerationtimeMs(Double generationtimeMs) {
-        this.generationtimeMs = generationtimeMs;
-    }
+    @Column(name = "opn_meteo_wnd_dir")
+    private Integer windDirection;
 
-    public Integer getUtcOffsetSeconds() {
-        return utcOffsetSeconds;
-    }
+    @Column(name = "opn_meteo_is_day")
+    private Boolean day;
 
-    public void setUtcOffsetSeconds(Integer utcOffsetSeconds) {
-        this.utcOffsetSeconds = utcOffsetSeconds;
-    }
+    @Column(name = "opn_meteo_weathercode")
+    private String weatherCode;
 
-    public String getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(String timezone) {
-        this.timezone = timezone;
-    }
-
-    public String getTimezoneAbbreviation() {
-        return timezoneAbbreviation;
-    }
-
-    public void setTimezoneAbbreviation(String timezoneAbbreviation) {
-        this.timezoneAbbreviation = timezoneAbbreviation;
-    }
-
-    public Integer getElevation() {
-        return elevation;
-    }
-
-    public void setElevation(Integer elevation) {
-        this.elevation = elevation;
-    }
-
-    public OpenMeteoCurrentWeatherUnitEntity getCurrentWeatherUnitsDTO() {
-        return currentWeatherUnitsDTO;
-    }
-
-    public void setCurrentWeatherUnitsDTO(OpenMeteoCurrentWeatherUnitEntity currentWeatherUnitsDTO) {
-        this.currentWeatherUnitsDTO = currentWeatherUnitsDTO;
-    }
-
-    public OpenMeteoCurrentWeatherEntity getCurrentWeatherDTO() {
-        return currentWeatherDTO;
-    }
-
-    public void setCurrentWeatherDTO(OpenMeteoCurrentWeatherEntity currentWeatherDTO) {
-        this.currentWeatherDTO = currentWeatherDTO;
-    }
+    // Getter e Setter
 }
