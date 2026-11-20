@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -23,4 +26,21 @@ public class CityEntity {
     private Float latitude;
     @Column(name = "city_longitude", nullable = false)
     private Float longitude;
+
+    @OneToMany(
+            mappedBy = "city",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<OpenMeteoEntity> meteoData = new ArrayList<>();
+
+    public void addMeteoData(OpenMeteoEntity meteo) {
+        meteoData.add(meteo);
+        meteo.setCity(this);
+    }
+
+    public void removeMeteoData(OpenMeteoEntity meteo) {
+        meteoData.remove(meteo);
+        meteo.setCity(null);
+    }
 }

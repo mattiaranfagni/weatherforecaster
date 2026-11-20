@@ -1,8 +1,6 @@
 package it.ranftesting.weatherforecaster.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherDTO;
-import it.ranftesting.weatherforecaster.dto.OpenMeteoCurrentWeatherUnitDTO;
+import it.ranftesting.weatherforecaster.entity.CityEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -68,4 +66,7 @@ public class OpenMeteoEntity {
     @Column(name = "opn_meteo_weathercode")
     private String weatherCode;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
+    private CityEntity city;
 }
