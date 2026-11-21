@@ -60,6 +60,9 @@ public class OpenMeteoEntity {
     @Column(name = "opn_meteo_wnd_dir")
     private Integer windDirection;
 
+    @Column(name = "opn_meteo_wnd_dir_unit")
+    private String windDirectionUnit;
+
     @Column(name = "opn_meteo_is_day")
     private Boolean day;
 

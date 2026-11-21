@@ -1,10 +1,7 @@
-package it.ranftesting.weatherforecaster.dto;
+package it.ranftesting.weatherforecaster.dto.openmeteo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 @Setter
 @Getter

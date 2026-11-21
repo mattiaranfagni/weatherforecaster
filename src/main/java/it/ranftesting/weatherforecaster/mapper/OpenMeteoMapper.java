@@ -1,14 +1,9 @@
 package it.ranftesting.weatherforecaster.mapper;
 
-import it.ranftesting.weatherforecaster.dto.OpenMeteoDTO;
+import it.ranftesting.weatherforecaster.dto.openmeteo.OpenMeteoDTO;
 import it.ranftesting.weatherforecaster.entity.OpenMeteoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Mapper(componentModel = "spring")
 public interface OpenMeteoMapper {
@@ -29,6 +24,7 @@ public interface OpenMeteoMapper {
     @Mapping(target = "intervalUnit", source = "currentWeatherUnitsDTO.interval")
     @Mapping(target = "temperatureUnit", source = "currentWeatherUnitsDTO.temperature")
     @Mapping(target = "windSpeedUnit", source = "currentWeatherUnitsDTO.windSpeed")
+    @Mapping(target = "windDirectionUnit", source = "currentWeatherUnitsDTO.windDirection")
     @Mapping(target = "generationTimestamp", expression = "java(new java.util.Date())")
     OpenMeteoEntity toEntity(OpenMeteoDTO dto);
 }

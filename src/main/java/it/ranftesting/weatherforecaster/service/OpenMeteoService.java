@@ -1,7 +1,7 @@
 
 package it.ranftesting.weatherforecaster.service;
 
-import it.ranftesting.weatherforecaster.dto.OpenMeteoDTO;
+import it.ranftesting.weatherforecaster.dto.openmeteo.OpenMeteoDTO;
 import it.ranftesting.weatherforecaster.entity.CityEntity;
 import it.ranftesting.weatherforecaster.entity.OpenMeteoEntity;
 import it.ranftesting.weatherforecaster.mapper.OpenMeteoMapper;
@@ -48,7 +48,7 @@ public class OpenMeteoService {
         }
 
         CityEntity city = cityRepository
-                .findByName(cityName)
+                .findByNameIgnoreCase(cityName)
                 .orElseGet(() -> {
                     CityEntity newCity = new CityEntity();
                     newCity.setName(cityName);

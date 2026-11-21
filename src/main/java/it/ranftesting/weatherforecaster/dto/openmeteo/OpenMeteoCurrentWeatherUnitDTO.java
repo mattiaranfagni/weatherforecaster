@@ -1,26 +1,25 @@
-package it.ranftesting.weatherforecaster.dto;
+package it.ranftesting.weatherforecaster.dto.openmeteo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class OpenMeteoCurrentWeatherDTO {
+public class OpenMeteoCurrentWeatherUnitDTO {
     @JsonProperty("time")
-    private LocalDateTime time;
+    private String time;
     @JsonProperty("interval")
-    private Integer interval;
+    private String interval;
     @JsonProperty("temperature")
-    private Float temperature;
+    private String temperature;
     @JsonProperty("windspeed")
-    private Float windSpeed;
+    private String windSpeed;
     @JsonProperty("winddirection")
-    private Integer windDirection;
+    private String windDirection;
     @JsonProperty("is_day")
     private Boolean day;
     @JsonProperty("weathercode")
