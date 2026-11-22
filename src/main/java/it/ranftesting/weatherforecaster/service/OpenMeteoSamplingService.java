@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Objects;
 
 @Service
-public class OpenMeteoService {
+public class OpenMeteoSamplingService {
 
     @Value("${openmeteo.api.url}")
     private String apiUrl;
@@ -25,7 +25,7 @@ public class OpenMeteoService {
     private final CityRepository cityRepository;
     private final RestTemplate restTemplate;
 
-    public OpenMeteoService(OpenMeteoMapper mapper,OpenMeteoRepository repository, CityRepository cityRepository) {
+    public OpenMeteoSamplingService(OpenMeteoMapper mapper, OpenMeteoRepository repository, CityRepository cityRepository) {
         this.mapper = mapper;
         this.repository = repository;
         this.cityRepository = cityRepository;

@@ -1,32 +1,34 @@
 package it.ranftesting.weatherforecaster.controller;
 
-import it.ranftesting.weatherforecaster.service.OpenMeteoService;
+import it.ranftesting.weatherforecaster.dto.cityaveragemeasures.CityAveragesDTO;
+import it.ranftesting.weatherforecaster.service.OpenMeteoAverageService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/v1/weather")
 public class WeatherController {
 
-    private final OpenMeteoService openMeteoService;
+    private final OpenMeteoAverageService averageService;
 
-    public WeatherController(OpenMeteoService openMeteoService) {
-        this.openMeteoService = openMeteoService;
+    public WeatherController(OpenMeteoAverageService averageService) {
+        this.averageService = averageService;
     }
 
     @GetMapping("/")
-    public String index() {
-        return "Welcome to WeatherForecaster!";
+    public String  getBaseWelcomeResponse() { return "Welcome to WeatherForecaster!"; }
+
+    @GetMapping("/averages")
+    public List<CityAveragesDTO> getAllAverages() {
+        return averageService.getAllAverages();
     }
 
-    @GetMapping("/openmeteo-api-params")
-    public String getOpenMeteoData(
-                                   @RequestParam("city") String cityName,
-                                   @RequestParam("latitude") Float latitude,
-                                   @RequestParam("longitude") Float longitude,
-                                   @RequestParam("current_weather") Boolean currentWeather) {
-        return this.openMeteoService.getOpenMeteoData(cityName, latitude, longitude, currentWeather);
+    @GetMapping("/averages/{city}")
+    public CityAveragesDTO getAveragesByCity(@PathVariable String city) {
+        return averageService.getAveragesByCity(city);
     }
 }
