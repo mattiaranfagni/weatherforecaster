@@ -7,12 +7,11 @@ espone delle API REST per consultare le **medie** delle misurazioni di ogni citt
 ## Tecnologie
 
 - Java 21
-- Spring Boot 3.X.X (Web, Data JPA, Scheduling)
+- Spring Boot 4.1.2 (Web, Data JPA, Scheduling)
 - Maven
 - H2 (database su file)
 - Lombok e MapStruct
 - Docker / Docker Compose
-- JUnit 5
 
 ## Come funziona
 
