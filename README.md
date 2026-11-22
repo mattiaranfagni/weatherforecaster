@@ -95,4 +95,4 @@ In `application.properties`:
 | `openmeteo.api.polling.initial-delay` | `5000` | Attesa prima della prima raccolta (ms) |
 
 Variabili d'ambiente per il database: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`.
-Per la console H2 imposta `H2_CONSOLE=true` e apri `http://localhost:8080/h2-console`.
+Per la console H2 impostare `H2_CONSOLE=true` e apri `http://localhost:8080/h2-console`.
