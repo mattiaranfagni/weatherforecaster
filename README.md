@@ -96,16 +96,3 @@ In `application.properties`:
 
 Variabili d'ambiente per il database: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`.
 Per la console H2 imposta `H2_CONSOLE=true` e apri `http://localhost:8080/h2-console`.
-
-## Test
-
-```bash
-mvn test
-```
-
-## Possibili miglioramenti
-
-- Database PostgreSQL al posto di H2
-- Retry e timeout configurabili sulle chiamate a Open-Meteo
-- Medie su un intervallo di tempo (ad esempio ultime 24 ore)
-- Cache sulle risposte delle API
